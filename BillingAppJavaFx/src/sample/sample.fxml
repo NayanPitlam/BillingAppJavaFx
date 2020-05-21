@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="478.0" prefWidth="776.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+    <top>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="163.0" prefWidth="682.0" BorderPane.alignment="CENTER">
+            <Label layoutX="14.0" layoutY="111.0" text="Add Item :">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <ComboBox fx:id="comboBox" layoutX="96.0" layoutY="111.0" prefWidth="150.0" />
+            <Label layoutX="6.0" layoutY="54.0" text="Name of the customer :">
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </Label>
+            <TextField layoutX="162.0" layoutY="50.0" />
+            <Label layoutX="320.0" layoutY="54.0" text="Date : ">
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </Label>
+            <DatePicker fx:id="datePicker" editable="false" layoutX="365.0" layoutY="48.0" prefHeight="26.0" prefWidth="143.0" />
+            <Label layoutX="516.0" layoutY="50.0" prefHeight="22.0" prefWidth="53.0" text="Bill No :">
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </Label>
+            <fx:define>
+                    <ToggleGroup fx:id="QToggleGroup" />
+                    <ToggleGroup fx:id="CToggleGroup" />
+            </fx:define>
+            
+            <TextField fx:id="bill" editable="false" layoutX="570.0" layoutY="49.0" />
+            <RadioButton fx:id="grams" layoutX="246.0" layoutY="82.0" mnemonicParsing="false" onAction="#setKgs" text="grams" toggleGroup="$QToggleGroup"/>
+            <RadioButton fx:id="kgs" layoutX="349.0" layoutY="82.0" mnemonicParsing="false" onAction="#setKgs" text="kilograms" toggleGroup="$QToggleGroup"/>
+            <Label layoutX="259.0" layoutY="111.0" text="Quantity">
+                <font>
+                    <Font size="16.0" />
+                </font>
+            </Label>
+            <ComboBox fx:id="qBox" layoutX="334.0" layoutY="111.0" prefWidth="150.0" />
+            <Label layoutX="275.0" layoutY="6.0" prefHeight="36.0" prefWidth="172.0" text="    Bill Receipt" textAlignment="CENTER">
+                <font>
+                    <Font name="Arial Bold" size="22.0" />
+                </font>
+            </Label>
+            <Label layoutX="494.0" layoutY="115.0" text="Price : ">f
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </Label>
+            <Label fx:id="price" layoutX="543.0" layoutY="112.0" onMouseClicked="#setPrice" prefHeight="24.0" prefWidth="86.0">
+                <font>
+                    <Font size="15.0" />
+                </font>
+            </Label>
+            <Button fx:id="addButton" layoutX="586.0" layoutY="102.0" mnemonicParsing="false" onAction="#addItem" text="+">
+                <font>
+                    <Font name="Arial Black" size="20.0" />
+                </font>
+            </Button>
+            <Button fx:id="removeButton" layoutX="645.0" layoutY="100.0" mnemonicParsing="false" onAction="#removeItem" prefHeight="45.0" prefWidth="49.0" text="-">
+                <font>
+                    <Font name="Arial Black" size="20.0" />
+                </font>
+            </Button>
+        </AnchorPane>
+    </top>
+    <center>
+        <TableView fx:id="table" BorderPane.alignment="CENTER">
+            <columnResizePolicy>
+                <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+            </columnResizePolicy>
+            <columns>
+                <TableColumn prefWidth="302.0000122189522" resizable="false" text="Item Name">
+<!--                             style="-fx-alignment: CENTER;">-->
+                    <cellValueFactory>
+                        <PropertyValueFactory property="itemName" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn editable="false" prefWidth="125.79998779296875" resizable="false" text="Quantity">
+<!--                             style="-fx-alignment: CENTER;">-->
+                    <cellValueFactory>
+                        <PropertyValueFactory property="quantity" />
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="220.5999755859375" resizable="false" text="Price">
+<!--                             style="-fx-alignment: CENTER;">-->
+                    <cellValueFactory>
+                        <PropertyValueFactory property="price" />
+                    </cellValueFactory>
+                </TableColumn>
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <AnchorPane prefHeight="86.0" prefWidth="750.0" BorderPane.alignment="CENTER">
+            <Label layoutX="14.0" layoutY="6.0" text="Payment Mode :">
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </Label>
+            <RadioButton layoutX="25.0" layoutY="35.0" mnemonicParsing="false" text="Cash" toggleGroup="$CToggleGroup">
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </RadioButton>
+            <RadioButton layoutX="105.0" layoutY="34.0" mnemonicParsing="false" text="Credit Card" toggleGroup="$CToggleGroup">
+                <font>
+                    <Font name="Arial" size="15.0" />
+                </font>
+            </RadioButton>
+            <Label layoutX="360.0" layoutY="26.0" text="Total  Amount :">
+                <font>
+                    <Font name="Arial Bold" size="20.0" />
+                </font>
+            </Label>
+            <Label fx:id="totalPrice" layoutX="507.0" layoutY="22.0" onMouseClicked="#setTotalPrice" prefHeight="31.0" prefWidth="179.0" textAlignment="CENTER">
+                <font>
+                    <Font name="Arial Bold" size="20.0" />
+                </font>
+            </Label>
+        </AnchorPane>
+    </bottom>
+</BorderPane>
